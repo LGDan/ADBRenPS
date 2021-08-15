@@ -1,5 +1,9 @@
 # ADBRenPS
-AniDB UDP API Client and File Renamer, written in PowerShell and C#, all in one script.
+AniDB UDP API Client and File Renamer, written in PowerShell and C#, all in one script. 
+
+- This is not functional right away.
+- You will need to use the functions in this script to rename your own files. 
+- You will need to know powershell well to use this in its current state.
 
 ## Info
 
