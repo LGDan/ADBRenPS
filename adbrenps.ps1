@@ -1246,15 +1246,18 @@ function Test-AniDBApiFileCommand() {
 }
 
 function Test-AniDBRenamer() {
+
+    # Example function showing the output of the Get-AniDBRenameInfo command.
+
     $lookupResult = Get-AniDBRenameInfo `
-        -filePath "/home/dan/Downloads/Steins;Gate - 01 - Turning Point.mkv" `
+        -filePath "/Downloads/Steins;Gate - 01 - Turning Point.mkv" `
         -format "/mnt/cloud/anime/%english_name%/%english_name% - %epno% - %ep_name%.%file_type_extension%"
     $lookupResult
 
     #RawFileResult  : {ENGLISH_NAME, AID, FID, EPNO…}
     #RawAnimeResult : {ENGLISH_NAME, AID, YEAR, ROMANJI_NAME…}
     #ReplacerTable  : {%aid%, %file_type_extension%, %epno%, %fid%…}
-    #FilePath       : /home/dan/Downloads/Steins;Gate - 01 - Turning Point.mkv
+    #FilePath       : /Downloads/Steins;Gate - 01 - Turning Point.mkv
     #ResultPath     : /mnt/cloud/anime/Steins;Gate/Steins;Gate - 01 - Turning Point.mkv
 
     Invoke-AniDBLogout | Out-Null
