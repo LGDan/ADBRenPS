@@ -877,7 +877,7 @@ function Invoke-AniDBApiLoginIfRequired() {
         Write-Debug ("Logging In...")
         Invoke-QuickApiLogin
     }else{
-        Write-Host ("Already logged in.")
+        Write-Debug ("Already logged in.")
     }
 }
 
@@ -1088,7 +1088,7 @@ function Get-AniDBFieldsFromFormatString($format) {
 
 function Get-AniDBRenameInfo($filePath, $format) {
     # Has a file been specified?
-    if (Test-Path $filePath) {
+    if (Test-Path -LiteralPath $filePath) {
         # Yes.
 
         # First, get the fields set up for the request.
@@ -1315,6 +1315,15 @@ function New-Config() {
 "@
     $raw | Out-File "adbrenps_config.json"
 }
+
+function Invoke-DoRenames($DirectoryPath) {
+    Get-ChildItem -Path $DirectoryPath | Select-Object -ExpandProperty FullName | ForEach-Object {
+        Get-AniDBRenameInfo -filePath $_ -format $Global:config["destination_format"]
+    } | ForEach-Object {
+        # rclone move
+    }
+}
+
 #endregion
 
 #region Main Script
